@@ -4,7 +4,8 @@ const Promotion = require('../models/promotion.model');
 
 
 module.exports = {
-    /**path: /promotions */
+
+    /**GET: /promotions */
     getAllPromotions : (req, res, next) => {
         Promotion.find({})
         .then(promotion => {
@@ -16,7 +17,7 @@ module.exports = {
         
     },
 
-    /**path: /promotions/:id */
+    /**GET: /promotions/:id */
     getById: (req, res, next) => {
         Promotion.findById(req.params.id)
         .then(promotion => {
@@ -27,6 +28,7 @@ module.exports = {
         });
     },
 
+    /**POST: /promotions/:id */
     createPromotion: (req, res, next) => {
         const newPromotion = new Promotion(req.body);
         newPromotion.save()
